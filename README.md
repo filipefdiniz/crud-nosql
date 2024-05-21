@@ -27,8 +27,11 @@
 
    Abra o Visual Studio Code e execute o seguinte comando para clonar o repositório:
    ```bash
-   git clone [link do repositório]
+   git clone https://github.com/filipefdiniz/crud-nosql
    ```
+OU
+
+**Abra o arquivo zip enviado com a atividade e prossiga com as seguintes instruções**
    
 2. **Instalar Dependências**
 
@@ -62,8 +65,3 @@ A aplicação consiste em um sistema CRUD utilizando o MongoDB. As funcionalidad
 4. **Delete (Deletar Usuário)**
    - Botão vermelho que permite deletar o usuário do banco de dados.
 
----
-
-### Agradecimentos
-
-Agradecemos à PUC Minas pela oportunidade e aos colegas que colaboraram durante o desenvolvimento deste projeto.
