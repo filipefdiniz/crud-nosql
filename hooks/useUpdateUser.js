@@ -1,5 +1,5 @@
-import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
+import { useMutation, useQueryClient } from "react-query";
 import { toast } from "react-toastify";
 
 export async function updateUser(userId, data){
