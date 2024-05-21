@@ -1,4 +1,10 @@
-import { TextField, Button, CircularProgress } from "@mui/material";
+import {
+  TextField,
+  Button,
+  CircularProgress,
+  Box,
+  Typography,
+} from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import "react-toastify/dist/ReactToastify.css";
@@ -6,6 +12,8 @@ import { useState } from "react";
 import * as yup from "yup";
 import { useCreateUser } from "@/hooks/useCreateUser";
 import { getAllUsers } from "@/hooks/useGetUsers";
+import styled from "styled-components";
+import Image from "next/image";
 
 export const inputFields = [
   {
@@ -60,21 +68,54 @@ export default function CreateUserForm() {
 
   const onSubmit = async (data) => {
     handleCreateUser(data);
-    reset()
+    reset();
   };
 
   return (
     <>
-      <div className="center-box">
-        <div className="form-div">
-          <div className="titulo">
-            <h2>Cadastrar Usuário</h2>
-          </div>
-          <form onSubmit={handleSubmit(onSubmit)}>
+      <Box
+        sx={{
+          backgroundColor: '#2E4050',
+          display: "flex",
+          flexDirection: "column",
+          alignItems: 'center',
+          gap: '20px',
+          justifyContent: "center",
+          p: 4,
+          width: '350px',
+          borderRadius: '10px',
+          boxShadow: '0px 4px 4px #252c2d'
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
+          <img src="./mongodb.png" alt="mongodb" width={100} height={40} />
+          <Typography variant="h4" sx={{ color: "white", fontWeight: "bold" }}>
+            CRUD
+          </Typography>
+        </Box>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "10px",
+            }}
+          >
             {inputFields?.map((campo) => {
               return (
                 <TextField
-                  sx={{ width: "230px" }}
+                  sx={{
+                    width: "300px",
+                    backgroundColor: "white",
+                    borderRadius: "8px",
+                  }}
                   key={campo.field}
                   label={campo.nameInput}
                   type={campo.type}
@@ -82,9 +123,11 @@ export default function CreateUserForm() {
                 />
               );
             })}
+
             <Button
               variant="contained"
               type="submit"
+              sx={{ backgroundColor: "#00ED64", fontWeight: 'bold', mt: 2 }}
               endIcon={
                 isLoading ? (
                   <CircularProgress color="inherit" size={20} />
@@ -93,9 +136,9 @@ export default function CreateUserForm() {
             >
               Cadastrar
             </Button>
-          </form>
-        </div>
-      </div>
+          </Box>
+        </form>
+      </Box>
     </>
   );
 }

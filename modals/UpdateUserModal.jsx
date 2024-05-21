@@ -2,14 +2,17 @@ import { createUserSchema, inputFields } from "@/components/CreateUserForm";
 import { useUpdateUser } from "@/hooks/useUpdateUser";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
+  Box,
   Button,
   CircularProgress,
   Dialog,
   Modal,
   TextField,
+  Typography,
 } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import EditIcon from '@mui/icons-material/Edit';
 
 export default function UpdateUserModal({ user }) {
   const { handleUpdateUser, updateUsersMutate } = useUpdateUser(user._id);
@@ -45,9 +48,9 @@ export default function UpdateUserModal({ user }) {
     <>
       <Button
         onClick={handleOpen}
-        sx={{ background: "#7aa80e", color: "white" }}
+        sx={{ background: "#00ED64", color: "white" }}
       >
-        Editar
+        <EditIcon />
       </Button>
       <Dialog
         open={open}
@@ -55,9 +58,10 @@ export default function UpdateUserModal({ user }) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <div className="modal-carona">
-          <h3>Editar User</h3>
+        <Box sx={{p: 5, borderRadius: '15px'}}>
           <form onSubmit={handleSubmit(onSubmit)}>
+            <Box sx={{display: 'flex', flexDirection: 'column', gap: '20px', justifyContent: 'center', alignItems: 'center'}}>
+            <Typography variant="h5" sx={{fontWeight: 'bold'}}>EDITAR USUÁRIO</Typography>
             {inputFields?.map((campo) => {
               return (
                 <TextField
@@ -68,6 +72,7 @@ export default function UpdateUserModal({ user }) {
                 />
               );
             })}
+            
             <Button
               variant="contained"
               type="submit"
@@ -80,8 +85,9 @@ export default function UpdateUserModal({ user }) {
             >
               Editar
             </Button>
+            </Box>
           </form>
-        </div>
+        </Box>
       </Dialog>
     </>
   );

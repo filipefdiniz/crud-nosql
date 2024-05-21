@@ -1,6 +1,7 @@
 import { useDeleteUser } from "@/hooks/useDeleteUser";
-import { Box, Button, CircularProgress, Dialog } from "@mui/material";
+import { Box, Button, CircularProgress, Dialog, Typography } from "@mui/material";
 import { useState } from "react";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function DeleteUserModal({userId}) {
     
@@ -25,9 +26,9 @@ export default function DeleteUserModal({userId}) {
     <>
       <Button
         onClick={() => handleOpen()}
-        sx={{ background: "#6e0000", color: "white" }}
+        sx={{ background: "#FF0505", color: "white" }}
       >
-        Excluir
+        <DeleteIcon />
       </Button>
       <Dialog
         open={open}
@@ -42,14 +43,15 @@ export default function DeleteUserModal({userId}) {
             p: 4,
             maxWidth: 500,
             textAlign: "center",
+            borderRadius: '15px'
           }}
         >
-          <p>Tem certeza que deseja excluir?</p>
+          <Typography variant="h5">Tem certeza que deseja excluir?</Typography>
           <Button
             variant="contained"
             disabled={isLoading}
             onClick={() => handleClose()}
-            sx={{ mt: 2, mr: 2 }}
+            sx={{ mt: 2, mr: 2 , backgroundColor: "#00ED64" }}
           >
             Cancelar
           </Button>

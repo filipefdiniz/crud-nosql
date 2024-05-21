@@ -2,46 +2,48 @@ import { useDeleteUser } from "@/hooks/useDeleteUser";
 import { useGetUser } from "@/hooks/useGetUsers";
 import DeleteUserModal from "@/modals/DeleteUserConfirmationModal";
 import UpdateUserModal from "@/modals/UpdateUserModal";
-import { CircularProgress } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 
 export default function UsersTable() {
   const { data: users, isFetching: isFetching } = useGetUser();
 
   return (
     <>
-      <table>
-        <thead style={{ backgroundColor: "black", color: "white" }}>
-          <tr>
-            <th>Ih</th>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Telefone</th>
-            <th>CPF</th>
-            <th>Ihahe</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
+      <Box sx={{backgroundColor: 'white', p: 6, display: 'flex', flexDirection: 'column', alignItems: 'center', overflowY: 'auto' }}>
+        <Typography variant="h4" sx={{fontWeight: 'bold', color:"#192C3D", mb: 4}}>LISTA DE CADASTRO</Typography>
+        <Box sx={{display: 'flex', flexDirection: 'column', gap: '30px'}}>
         {users &&
           users.map((user) => (
-            <tbody key={user._id}>
-              <tr>
-                <td>{user._id}</td>
-                <td>{user.nome}</td>
-                <td>{user.email}</td>
-                <td>{user.telefone}</td>
-                <td>{user.cpf}</td>
-                <td>{user.idade}</td>
-                <td>
-                  <UpdateUserModal user={user} />
-                </td>
-                <td>
-                  <DeleteUserModal userId={user._id} />
-                </td>
-              </tr>
-            </tbody>
+            <Box key={user._id} sx={{backgroundColor: '#192C3D', p: 4, borderRadius: '15px', width: '550px'}}>
+              <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
+                <Typography variant="h6" color={"#00ED64"}>
+                  ID: {user._id}
+                </Typography>
+                <Box sx={{display: 'flex', gap: '5px'}}>
+                <UpdateUserModal user={user} />
+                <DeleteUserModal userId={user._id} />
+                </Box>
+              </Box>
+              <Box sx={{display: 'flex', gap: '5px'}}>
+                <Typography color={"#00ED64"}>Nome:</Typography>
+                <Typography color={"white"}>{user.nome}</Typography>
+              </Box>
+              <Box sx={{display: 'flex', gap: '5px'}}>
+                <Typography color={"#00ED64"}>Email:</Typography>
+                <Typography color={"white"}>{user.email}</Typography>
+              </Box>
+              <Box sx={{display: 'flex', gap: '5px'}}>
+                <Typography color={"#00ED64"}>Telefone:</Typography>
+                <Typography color={"white"}>{user.telefone}</Typography>
+              </Box>
+              <Box sx={{display: 'flex', gap: '5px'}}>
+                <Typography color={"#00ED64"}>Idade:</Typography>
+                <Typography color={"white"}>{user.idade}</Typography>
+              </Box>
+            </Box>
           ))}
-      </table>
+          </Box>
+      </Box>
     </>
   );
 }
