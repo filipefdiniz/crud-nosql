@@ -10,7 +10,7 @@ Link do video do projeto: https://youtu.be/6OrZ6u0WDb8
 
 Instruçoes para iniciar o programa: 
 
-Link publico de acesso ao projeto: https://crud-nosql.vercel.app/
+Link publico de acesso ao projeto: https://crud-nosql-qzwj.vercel.app/
 
 Clonar repositòrio: 
 
