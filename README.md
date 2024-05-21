@@ -6,6 +6,7 @@ Tecnologias utilizadas: Next.js, React.js, Node.js, JavaScript, HTML e CSS
 
 Bando de dados: MongoDB 
 
+Link do video do projeto: https://youtu.be/6OrZ6u0WDb8
 Instruçoes para iniciar o programa: 
 
 Link publico: 
